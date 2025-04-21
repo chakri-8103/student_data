@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,44 +8,71 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
-        background-color: #f8f9fa;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0;
-        overflow: hidden;
+      background-color: #f8f9fa;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
     }
+
     .container {
       max-width: 500px;
       margin-top: 5vh;
     }
   </style>
 </head>
+
 <body oncontextmenu="return false">
 
   <div class="m-5 col-md-8">
     <div class="card shadow p-4">
       <h3 class="text-center mb-4">Fill in the Details Immediately</h3>
-      <form id="examForm" action="https://docs.google.com/forms/d/e/1FAIpQLSd4iaku-XkmB-sTOuCc4x2BTQs49ECE9N2vW58CEldd0vKGaA/formResponse" method="POST" target="_blank">
-        
+      <form id="examForm"
+        action="https://docs.google.com/forms/d/e/1FAIpQLSd4iaku-XkmB-sTOuCc4x2BTQs49ECE9N2vW58CEldd0vKGaA/formResponse"
+        method="POST" target="_blank">
+
         <!-- Full Name -->
         <div class="mb-3">
           <label class="form-label">Full Name</label>
           <input type="text" class="form-control" name="entry.1102527692" required>
         </div>
 
-        <!-- Course Selection -->
+        <!-- Group -->
         <div class="mb-3">
-          <label class="form-label">Course</label>
+          <label class="form-label">Group</label>
           <select class="form-select" name="entry.331402122" required>
-            <option value="">Select Course</option>
+            <option value="">Select Group</option>
             <option value="MCCS">MCCS</option>
             <option value="MPCS">MPCS</option>
           </select>
         </div>
 
-        <!-- Exam Selection -->
+        <!-- Mobile Number -->
+        <div class="mb-3">
+          <label class="form-label">Mobile Number</label>
+          <input type="tel" class="form-control" name="entry.1508533733" required>
+        </div>
+
+        <!-- Date of Birth -->
+        <div class="mb-3">
+          <label class="form-label">Date of Birth</label>
+          <input type="date" class="form-control" name="entry.2052442252" required>
+        </div>
+
+        <!-- Registration Number -->
+        <div class="mb-3">
+          <label class="form-label">Registration Number</label>
+          <input type="text" class="form-control" name="entry.18869522" required>
+        </div>
+
+        <!-- Degree Hall Ticket No -->
+        <div class="mb-3">
+          <label class="form-label">Degree Hall Ticket No</label>
+          <input type="text" class="form-control" name="entry.1620111749" required>
+        </div>
+
+        <!-- Course Selection (Exam Selection) -->
         <div class="mb-3">
           <label class="form-label">Select Exam</label>
           <select class="form-select" name="entry.724082569" required>
@@ -54,16 +82,13 @@
           </select>
         </div>
 
-        <!-- Degree Hall Ticket No -->
         <div class="mb-3">
-          <label class="form-label">Degree Hall Ticket No</label>
-          <input type="text" class="form-control" name="entry.1620111749" required>
-        </div>
-
-        <!-- Registration Number -->
-        <div class="mb-3">
-          <label class="form-label">Registration Number</label>
-          <input type="text" class="form-control" name="entry.18869522" required>
+          <label class="form-label">Course</label>
+          <select class="form-select" name="entry.331402122" required>
+            <option value="">Select Course</option>
+            <option value="MCCS">MCCS</option>
+            <option value="MPCS">MPCS</option>
+          </select>
         </div>
 
         <div class="text-end">
@@ -71,38 +96,51 @@
         </div>
 
       </form>
+
     </div>
   </div>
 
   <!-- Disable ctrl keys and inspect shortcuts -->
   <script>
     // Handle form submission
-    document.getElementById("examForm").addEventListener("submit", function(event) {
+    document.getElementById("examForm").addEventListener("submit", function (event) {
       event.preventDefault(); // Prevent the form from submitting the traditional way
-      
+  
       // Display an alert message
       alert("Your form has been submitted successfully!");
-
+  
       // Optionally, submit the form manually
       setTimeout(() => {
         event.target.submit(); // Submit the form to the Google Form
       }, 500); // Delay to allow the alert to show before submission
     });
-
-    // Disable right-click and other inspection shortcuts
+  
+    // Disable only Ctrl+U, F12, Ctrl+Shift+I, Ctrl+Shift+J
     document.addEventListener('keydown', function (e) {
-      if (e.ctrlKey || e.metaKey) e.preventDefault();
-      if (e.key === "F12" || (e.ctrlKey && e.shiftKey && (e.key === "I" || e.key === "J"))) {
+      // Block Ctrl+U
+      if (e.ctrlKey && e.key.toLowerCase() === 'u') {
+        e.preventDefault();
+      }
+  
+      // Block F12
+      if (e.key === 'F12') {
+        e.preventDefault();
+      }
+  
+      // Block Ctrl+Shift+I or Ctrl+Shift+J
+      if (e.ctrlKey && e.shiftKey && (e.key.toLowerCase() === 'i' || e.key.toLowerCase() === 'j')) {
         e.preventDefault();
       }
     });
-
+  
     // Disable right-click
     window.addEventListener("contextmenu", function (e) {
       e.preventDefault();
     });
   </script>
+  
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
